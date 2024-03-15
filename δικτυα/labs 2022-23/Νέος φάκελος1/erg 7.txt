@@ -1,0 +1,39 @@
+
+- ethernet kalwdia einai to fysiko epipedo
+
+- nic xrisimopoioun mac addresses ara anikoun sta epipeda zeuksis
+
+5.1
+
+1. sto spiti haha
+
+2. network id 194.20.0.32
+   broadcast address 	194.20.0.63
+
+3. 8 pithana ypodisktya
+   Usable Host IP Range:	194.20.0.33 - 194.20.0.62 (proto kai teleutaio egkyro)
+
+4. {network ID}/{subnet mask bits} --> 194.20.0.32/27
+
+5.  sto spiti
+
+6.  sto spiti
+
+7. /28 apo thn eikona 5.3 kai vlepontas ta hosts ana subnet pairnw to amesws megalytero
+
+8. /27 kai thn antistoixh maska
+
+9. 192.168.1.63
+
+10. 55.192.0.0 /10 --> class a
+
+11. Network Address: --> 192.168.64.0
+
+12. h praksh 32-18 = 14 usable hosts = 2^14 - 2
+
+13. oxi giati den mas dinetai to subnet mask :)
+    29+1(emeis) = 30 hosts ---> /27 apo eikona 5.3
+    prefix /27
+    network id 	104.17.106.96
+    broadcast address 	104.17.106.127
+    teleutaio egyro 104.17.106.126

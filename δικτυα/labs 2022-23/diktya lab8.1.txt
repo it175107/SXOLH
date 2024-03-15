@@ -1,0 +1,42 @@
+erg3
+
+https://www.davidc.net/sites/default/subnets/subnets.html
+
+5.2
+elaxisto 1026 +2 gia to kathena 800+222
+
+1. 21-> 2046+2 = 2048
+2. 800-> /22 1022+2 = 1024
+   222-> /24 254+2 = 256
+   2048-1024-256 = 768
+
+5.3
+1.net1 - 50 - /24 - 62 - 10.0.0.0/24 - 10.0.0.1 - 10.0.0.254
+  net2 - 200 - /26 - 254 - 10.0.0.0/26 - 10.0.1.1 - 10.0.1.62
+  net3 - 16 -  /27 - 30 - 10.0.0.0/27 - 10.0.1.65 - 10.0.1.94
+
+3.254-200 = 54
+  62-50 = 12
+  30-16 = 14
+  54+12+14 = 80
+
+4.80/346
+  43.25%
+
+5.5
+1.switch1-router3
+  router3-router2
+  router2-switch 2
+  router2-switch0
+  router2-hub1
+  oti sindeetai se router
+  sto ipodiktio aneikei kai to router kai to switch oxi ta hub
+  megalutero ipodiktio router2 - hub2 9 hosts
+
+2.1 - 9 - /28 - 14 - 192.168.0.0/28 - 0.1-0.14
+  2 - 8 - /28 - 14 - 192.168.1.0/28 - 1.1-1.14
+  3 - 8 - /29 - 6 - 192.168.2.0/29 - 2.1-2.6
+  4 - 6 - /29 - 6 - 192.168.3.0/29 - 3.1-3.6
+  5 - 2 - /30 - 2 - 192.168.4.0/30 - 4.1-4.2
+
+10. 3o epipedo
