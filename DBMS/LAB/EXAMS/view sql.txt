@@ -1,0 +1,6 @@
+CREATE VIEW CHRSP (cid,cname,hid,hname,city,room,daily_cost,days_of_stay) AS 
+      SELECT C.cid, C.name, H.hid, H.name, H.city, RT.description, HR.price, R.departdate-R.arrivaldate
+      FROM Reservation R JOIN Customer C ON (R.cid=C.cid)
+                                         JOIN HOTEL H ON (R.hid=H.hid)
+                                         JOIN HRooms HR ON (HR.hid=R.hid AND HR.tid=R.tid)
+                                         JOIN RoomType RT ON (R.tid=RT.tid)

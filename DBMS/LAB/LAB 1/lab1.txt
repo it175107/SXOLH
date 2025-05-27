@@ -1,0 +1,24 @@
+1. πpizzeria Serves
+2. πpizzeria σname='Dan' Frequents
+3.πpizzeria Frequents - (πpizzeria σname='Fay' Frequents)
+4.πpizzeria ( Frequents ⨝ (σgender='female' Person))
+5.πpizza (Serves ⨝ πpizzeria σname='Fay' Frequents)
+6.πname (Frequents ⨝ (πpizzeria σname='Fay' Frequents))
+7.πpizzeria (Serves ⨝ πpizza σname='Dan' Eats)
+8. πpizzeria ((πpizza Serves ⨝ (πpizza σname='Dan' Eats)) ⨝ (πpizzeria Frequents - (πpizzeria σname='Dan' Frequents)))
+9.(πpizzeria σname='Eli' Frequents ) ⨝ (πpizzeria σname='Dan' Frequents)
+10
+14.πpizzeria (Serves ⨝ πpizza σname='Amy' Eats)
+15
+16.σage=d.ilik AND name>on (πon,ilik ρilik <-age , on <-name (ρd (Person)) ⨯ πname,age Person) 
+
+------------------------------------------------------------------------------------------------------
+
+1.πpizzeria (Serves)
+3.πpizzeria (Serves) - πpizzeria (σname='Fay' (Frequents))
+4.πpizzeria (σgender='female' (Person) ? Frequents) συζευξη
+5.πpizza (πpizzeria (σname='Fay' (Frequents)) ? Serves) συζευξη
+6.πname (σname?'Fay' (πpizzeria (σname='Fay' (Frequents)) ? Frequents)) συζευξη
+8.πpizzeria (πpizza (σname='Dan' (Eats)) ? Serves) - πpizzeria (σname='Dan' (Frequents)) συζευξη
+το συμβολο που δεν φαινεται ειναι η συζευξη
+16.πPerson1.name,Person.name (σ(Person1.age=Person.age) and (Person1.name > Person.name)  ((ρ Person1 Person) ? Person)) συζευξη

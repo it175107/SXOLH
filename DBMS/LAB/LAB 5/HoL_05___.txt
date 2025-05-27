@@ -1,0 +1,139 @@
+1. SELECT K.* 
+FROM keeper K INNER JOIN vehicle V ON (K.id = V.keeper)
+WHERE V.id = 'SO 02 PSP'
+
+2. SELECT COUNT(perim)
+FROM camera 
+WHERE perim = 'IN'
+
+3. SELECT I.*
+FROM camera C INNER JOIN image I ON (C.id = I.camera) 
+WHERE C.id = '10' AND I.whn < '2007-02-28' 
+
+4. SELECT  I1.reg
+FROM image I1, image I2
+WHERE I1.reg = I2.reg AND I1.whn - I2.whn > '00:00:00' AND I1.whn - I2.whn <= '00:01:00'
+
+5. SELECT DISTINCT K.id, K.name, K.address
+FROM keeper K INNER JOIN vehicle V ON (K.id = V.keeper)
+              INNER JOIN permit P ON (V.id = P.reg)
+WHERE P.sdate = '2007-01-30 00:00:00'
+ORDER BY K.name DESC
+
+6.  SELECT K.id, K.name, K.address
+FROM keeper K, vehicle V, image I
+WHERE I.reg = V.id AND V.keeper = K.id
+AND I.camera=2
+AND K.id  IN (SELECT K1.id
+	      FROM keeper K1, vehicle V1, image I1
+	      WHERE I1.reg = V1.id AND V1.keeper = K1.id
+	      AND I1.camera=5)
+
+7. SELECT K.id, K.name, K.address
+FROM keeper K INNER JOIN Vehicle V ON (K.id = V.keeper)
+              INNER JOIN image I ON (V.id = I.reg)
+WHERE I.camera = 2
+INTERSECT
+SELECT K.id, K.name, K.address
+FROM keeper K INNER JOIN Vehicle V ON (K.id = V.keeper)
+              INNER JOIN image I ON (V.id = I.reg)
+WHERE I.camera = 5
+
+7. SELECT K.id, K.name, K.address
+FROM keeper K, vehicle V, image I
+WHERE I.reg = V.id AND V.keeper = K.id
+AND I.camera=2
+INTERSECT
+SELECT K.id, K.name, K.address
+FROM keeper K, vehicle V, image I
+WHERE I.reg = V.id AND V.keeper = K.id
+AND I.camera=5
+
+8. SELECT K.id, K.name, K.address
+FROM keeper K, vehicle V, image I
+WHERE I.reg = V.id AND V.keeper = K.id
+AND I.camera=2
+AND EXISTS (SELECT K1.id 
+            FROM keeper K1, vehicle V1, image I1
+            WHERE I1.reg = V1.id AND V1.keeper = K1.id
+            AND I1.camera=5 AND K1.id = K.id)
+
+9. WITH Photographed_by5 AS
+(SELECT K.id
+FROM keeper K, vehicle V, image I
+WHERE I.reg=V.id AND V.keeper = K.id
+AND I.camera=5)
+SELECT K.id, K.name, K.address
+FROM keeper K, vehicle V, image I
+WHERE I.reg=V.id AND V.keeper = K.id
+AND I.camera=2 
+AND (K.id IN (SELECT id FROM Photographed_by5))
+
+10.  WITH Photographed_by5 AS
+(SELECT K.id
+FROM keeper K, vehicle V, image I
+WHERE I.reg=V.id AND V.keeper = K.id
+AND I.camera=5)
+SELECT K.id, K.name, K.address
+FROM keeper K, vehicle V, image I
+WHERE I.reg=V.id AND V.keeper = K.id
+AND I.camera=2 
+AND EXISTS (SELECT id FROM Photographed_by5)
+
+
+11. 
+CREATE VIEW Min_Intervals AS
+(SELECT I.reg, MIN(whn-sdate) AS min_i
+FROM permit P JOIN image I ON (P.reg=I.reg)
+WHERE whn>sdate
+GROUP BY I.reg)
+
+12. CREATE VIEW MIN_Intervals_Owners (Owner_ID, Owner_name, Vehicle, Min_Interval) AS
+SELECT K.id, K.name, MI.reg, MI.MIN_I
+FROM Min_Intervals MI JOIN vehicle V ON (V.id = MI.reg)
+                      JOIN keeper K ON (K.id = V.keeper)
+
+13.  SELECT Owner_name, MIN_Interval
+FROM MIN_Intervals_Owners
+WHERE MIN_Interval = (SELECT MIN(MIN_Interval)
+		      FROM MIN_Intervals_Owners)
+
+14. WITH Sorter_Time AS
+(SELECT MIN(whn-sdate) AS s_time, V.keeper
+FROM permit P INNER JOIN image I ON (P.reg = I.reg)
+              INNER JOIN vehicle V ON (V.id = I.reg)
+WHERE whn > sdate
+GROUP BY V.keeper)
+SELECT K.name, Sorter_Time.s_time 
+FROM keeper K JOIN Sorter_Time ON (K.id=Sorter_Time.keeper)
+WHERE Sorter_Time.s_time=(SELECT MIN(Sorter_Time.s_time)
+			  FROM Sorter_Time)
+
+15.  WITH Sorter_Time AS
+(SELECT MIN(whn-sdate) AS s_time, V.keeper
+FROM permit P INNER JOIN image I ON (P.reg = I.reg)
+              INNER JOIN vehicle V ON (V.id = I.reg)
+WHERE whn > sdate
+GROUP BY V.keeper)
+SELECT  K.name, Sorter_Time.s_time, EXTRACT (DAY FROM Sorter_Time.s_time) as day, 
+EXTRACT (HOUR FROM Sorter_Time.s_time) as hour, EXTRACT (MINUTE FROM Sorter_Time.s_time) as minute
+FROM keeper K JOIN Sorter_Time ON (K.id=Sorter_Time.keeper)
+WHERE Sorter_Time.s_time=(SELECT MIN(Sorter_Time.s_time)
+						  FROM Sorter_Time)
+
+
+
+sql zoo
+6. SELECT continent, COUNT(*)
+   FROM world
+   GROUP BY continent
+
+7. SELECT continent, COUNT(name)
+FROM world
+WHERE population >= 10000000
+GROUP BY continent
+
+8. SELECT continent
+FROM world
+GROUP BY continent
+HAVING SUM(population) > 100000000

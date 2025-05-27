@@ -1,0 +1,66 @@
+select * from permit
+select * from image
+select * from camera
+select * from vehicle
+select * from keeper
+--------------------------------------------------
+ 4.select I1.reg
+ from image I1 join image I2 on (I1.reg=I2.reg)
+ where I1.whn < I2.whn and I2.whn-I1.whn < interval '00:01:01'
+--------------------------------------------------
+ 6.
+ select K.id, K.name, K.address
+ from keeper K JOIN vehicle V ON (K.id=V.keeper)
+	       JOIN image I ON (V.id=I.reg)
+ where I.camera=2
+ INTERSECT
+  select K.id, K.name, K.address
+ from keeper K JOIN vehicle V ON (K.id=V.keeper)
+	       JOIN image I ON (V.id=I.reg)
+ where I.camera=5
+-------------------------------------------
+select K.id, K.name, K.address
+from keeper K JOIN vehicle V ON (K.id=V.keeper)
+	      JOIN image I ON (V.id=I.reg)
+ where I.camera=2 and K.id IN (select K.id
+			      from keeper K JOIN vehicle V ON (K.id=V.keeper)
+			      JOIN image I ON (V.id=I.reg)
+			      where I.camera=5)
+	 ----------------------------------------
+9.
+WITH 
+Photographed_by5 AS
+(select k.id
+from keeper k, vehicle v, image i
+where i.reg=v.id and v.keeper=k.id
+and i.camera=5)
+select k.id, k.name, k.address
+from keeper k, vehicle v, image I
+where i.reg=v.id and v.keeper=k.id
+and i.camera=2 and K.id IN (select id from Photographed_by5)
+----------------------------------------------------------
+11.
+create view Min_Interval as (
+select P.reg, min(whn-sdate) as min_i
+from permit P JOIN image I ON (P.reg=I.reg)
+where whn>sdate
+GROUP BY P.reg
+)
+
+select * from Min_Interval 
+--------------------------------
+12.
+create view MIN_Intervals_Owners (Owner_ID,Owner_name, Vehicle,MIN_Interval) as
+(
+select K.id, K.name, MI.reg, MI.min_i
+from keeper K JOIN vehicle V ON (K.id=V.keeper)
+	      JOIN Min_Interval MI ON (V.id=MI.reg)
+	      )
+
+select * from MIN_Intervals_Owners
+-----------------------------------------------
+13.
+select Owner_name, MIN_Interval
+from MIN_Intervals_Owners
+where MIN_Interval = (selevt min(MIN_Interval)
+			from MIN_Intervals_Owners)
