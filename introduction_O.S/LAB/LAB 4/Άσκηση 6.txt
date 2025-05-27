@@ -1,0 +1,9 @@
+#!/bin/bash
+
+ls -l 
+echo -n "The total of simple files is: "
+ls -l | grep '^-' | wc -l
+echo -n "The total of directories is: "
+ls -l | grep '^d' | wc -l
+echo -n "The total of hidden files is: "
+ls -al | tr -s ' ' | cut -f9 -d' ' | grep '^\.' | wc -l

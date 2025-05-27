@@ -1,0 +1,15 @@
+1) ls -l | grep '^-' | sort -k5nr
+
+2) cat /etc/passwd | tr a-z A-Z
+
+3) ls -l | tr -s ' ' | cut -f9 -d' ' | grep -i '^d' | sort -r | tr a-z A-Z
+
+4) ls -l | grep '^d' | wc -l
+
+5) wc -l < ~asidirop/public/OSIntro/Lab4_files/passwd
+
+6) cut -f1 -d':' ~asidirop/public/OSIntro/Lab4_files/passwd | grep '^a.*p$' | wc -l
+
+7) ps | tr -s ' ' | sort -k1nr | head -1	
+
+8) ls -l | grep '^-' | sort -k5nr | head -1

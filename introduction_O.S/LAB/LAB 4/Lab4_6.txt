@@ -1,0 +1,5 @@
+Πληθος απλών αρχείων   ls -p | grep -v / | wc -l
+Πληθος καταλόγων   ls -l | grep "^d" | wc -l
+κρυφά αρχεία   ls -ald .* | wc -l  ή
+ 	ls -ap | grep -v / | egrep "^\." 
+κρυφοί κατάλογοι   ls -ap | egrep "^\..*/$" |wc -l
