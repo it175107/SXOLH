@@ -1,0 +1,103 @@
+1η ενοτητα
+
+- ip config /all
+
+Γραψτε ποια πεδια παραμενουν ιδια (dns servser, default gateway, subnet mask, dhcp) 
+για το host του ιδιου υποδικτυου
+και ποια αλλαζουν (physical address nic dieuthynsi, ipv4 address).
+
+εντωπιστε πληροφοριες για 2 (physical address) 3 (ip address) και 5ο (dhcp dns server, 
+otidhpote exei server sthn onomasia tou) επιπεδο
+
+
+
+- ping <ip address>
+
+μας δινει την δυνατοτητα αν υπαρχει συνδεση στο απομακρυσμενο host και την αποδοση
+της συνδεσης που δημιουργειται
+
+
+
+- tracert <ip address>
+
+λιστα απο στασεις απο το τοπικο host προς τον τελικο προορισμο
+
+αν μας ρωτησουν αριθμο δρομολογητων θα απαντησουμε τον αριθμο των hops μειον 1
+
+grnet (το τελευταιο υποδικτυο της σχολης) αν μας ρωτησει απο ποιο πηδαει απο της 
+σχολης σε αλλο
+
+ποια ειναι η διευθυνση του δρομολογητη πχ του παροχου ( τοτε θα ειναι η τελευταια στηλη )
+
+
+---------------------------------------------------------------------
+
+
+2η ενοτητα
+
+να βρειτε για συγκριμενη ονομασια να βρειτε τα id ή για process id ποιες εκτελουνται
+
+μαθε ολο το διαγραμμα για τα επιπεδα
+
+διαδικασια ενθυλακωσης και απενθυλακωσης
+
+ενα πλαισιο πχ περιλαμβανει την κεφαλιδα επιπεδου ζευξης και ολη την πληροφορια των πανω επιπεδων
+
+- DNS
+
+κανει αντιστοιχιση main name 
+
+(dnswatch) poses anazitiseis exei ektelei gia to domain auto, 1h grammh root server ,
+2h grammh domail level server,
+4 eidwn records,
+synolikos xronos ektelesis gia tis anazitisis pou ektelestikan 
+
+- wireshark (dns, http, dhcp, arp)
+
+/dns http
+
+6o erg epanalipsi
+
+entopiste sygkrimeno pedio h na vreite antoistoixes plhrofories
+
+vazw filtra (px dns)
+
+katagrafw dieuthynseis 2o kai 3ou epipedou (2o panel) - 2o epipedo einai h ethernet antigrafw source destination mac adress -
+									- 3o epipedo kai edw source kai destination ip-
+
+checksum (epipedo metaforas) px mporei na zhthsei dekaeksadiki timh
+
+gia http sigoura tha exei erwthseis gia http segments, h prwth parenthesi einai to synoliko megethos,
+sequence number, arithmisi se poio frame vrisketai 
+
+na vreite poio einai to zeugos gia to sygkekrimeno arp erwthma h apokrish -> deksi klik sto transaction id kai aplly as filter
+
+
+- gamsi net (ergaleio)
+
+tha dinetai dekaeksadikos pinakas kai to kanoume copy paste sto gamsi
+
+mporei na rwthsei megethos kai theseis sygkekrimenou pediou
+
+ena prottocol data unit apoteleitai apo meros kefalidas (length an pame to pontiki ston katw pinaka gia kathe epipedo)
+kai meros pliroforias
+
+pou vrisketai ena sygkekrimeno pedio, apla metakinoume ton kersora h koitame katw sto export
+pou ta exei grammena kai to patame
+
+----------------------------------------------------------------------------
+
+3h enothta
+
+
+vriskw subnet mask gia ypodiktyo pairnwntas amesws to panw arithmo apo ta host
+
+divide sto ergaleio opou otan vriskoume kati synexizoume sto epomeno
+
+useable ips + 2 (broadcast id kai network id)
+
+auto me ta diktya xrisimopoiw o calculator.net gia network id otan den dinetai
+
+
+
+

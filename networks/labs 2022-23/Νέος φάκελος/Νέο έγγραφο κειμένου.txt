@@ -1,0 +1,77 @@
+sel 23 ask 4.6
+
+1. udp
+
+2. req: src port: 68
+	dst port: 67
+  	
+   ack: src port: 67
+	dst port: 68
+
+3. options request ip address mesa sto dhcp
+
+4. disc:0x00003d1d
+   offer:0x00003d1d
+   request:0x00003d1e
+   ack:0x00003d1e
+
+5. discover - src: 0.0.0.0
+	      dst: 255.255.255.255
+   offer - src: 192.168.0.1
+	   dst: 192.168.0.10
+   request - src: 0.0.0.0
+	     dst: 255.255.255.255
+   ack - src: 192.168.0.1
+	 dst: 192.168.0.10
+
+
+ask 4.7
+
+
+1. 15
+
+2. 192.168.19.159
+
+3. 192.168.19.129
+
+4. option: parameter request list
+
+5. sto ack h sto offer sto option IP Address Lease Time
+
+6. den lamvanei epivevewsh to release an xathei den
+yparxei megalh epiptwsh
+
+σελ 25 ασκ 4.8
+
+
+
+to 4 apantaei sto mnm 3 (1o zeugos arp)
+
+1. request - 08:00:27:9b:86:a4
+   reply - d4:21:22:35:93:c0
+
+2. 0x0806
+
+3. sender ip address: 192.168.1.5
+
+4. sender mac address
+
+5. mporei kapoios na mhn exei thn apanthsh giauth th ip
+
+6. opcode: request (1)
+           reply (2)
+
+
+
+
+
+
+
+
+
+
+
+             
+
+
+

@@ -1,0 +1,48 @@
+192.168.1.5 ip αποστολεα
+192.168.1.1 ip παραληπτη
+DNS Standard query 0xb285 NS kaspersky.com OPT  πληροφοριες
+
+o pinakas exei 4 xrwmata,kathe xrwma antistixei se ena protocol
+lenght-->megethos kefalidas tou sygkekrimenoy protocol
+
+thesi pediou -->field offset
+megethos     -->field length
+             -->byte offset
+
+pithani erwthsh sto telos px: na brw to megethos to PDU gia to UDP --> prosthesh UDP(8 bytes) + DNS(54)
+                              na brw to megethos to PDU gia to internet protocol 96-14=82
+allh erwthsh:
+megethos kefalidas 14 na brw megethos plhroforias gia to ethernet 96-14=82
+UDP: kefalida 8 , 54
+IPv4: kefalida 20bytes, plhroforia:54+8=62
+
+thesi tou pediou:14/95 --> IPv4
+
+-------------------------------
+askisi 3.5
+UDP
+source: [34-35]
+destination: [36-37]
+lenght: [38-39]
+checksum: [40-41]
+
+frame header(epipedo ζευξης)
+[0-5] destination
+[6-11] source
+[12-13] type
+[14-71] data
+
+IPv4 header
+[14] version
+[16-17] length
+[18-19] identifitacion
+	flags
+[20-21] fragment
+[22] TTL
+[23] protocol
+[24-25] checksum
+[26-29] source
+[30-33] destination
+Σελίδα | 9
+1. Ποιο είναι το μέγεθος των δεδομένων του επιπέδου εφαρμογής (72-42=30) h alliws sto dns katey8eian to length(30)
+
