@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Untitled 1</title>
+<script>
+function LostImage()
+{
+	document.getElementById("displayerror").innerHTML = "<h1>Image does not exist</h1>"
+	myImg.src ="tei.jpg"
+	if( myImg.id=="tei.jpg")
+	{
+		myImg.height=300;
+		myImg.width=300;
+	}
+	if( myImg.id=="tei.jpg")
+	{
+		myImg.height=350;
+		myImg.width=350;
+		
+
+	}
+</script>
+</head>
+
+<body>
+<div id="displayerror" style="background-color:yellow"></div>
+<H1>Διαχείριση λαθών</H1>
+<P>Image χωρίς διαχείριση λαθών.
+<img height="300" width="300"  SRC="tei.jpg" id="img1" 
+onerror="LostImage(this)" />
+<P>Image με διαχείριση λαθών.
+<img height="350" width="350" SRC="tei.jpg" \
+ id="img2" onerror="LostImage(this)" />
+
+</body>
+
+</html>

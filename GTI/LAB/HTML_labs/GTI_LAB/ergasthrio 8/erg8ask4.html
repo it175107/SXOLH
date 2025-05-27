@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Untitled 18</title>
+<style>
+.ColorLI {
+background-color: red}
+}
+</style>
+<script>
+function colorLI()
+{
+//var ch = document.getElementById("father").childNodes;
+
+var ch = document.getElementById("father").
+getElementsByTagName("LI");
+
+for( i = 0 ; i < ch.length; i++)
+{
+// var attr = document.createAttribute( "class" );
+ch[i].setAttribute( "class", "ColorLI" ); 
+}
+}
+</script>
+</head>
+<body>
+<ul id="father">
+<li >One</li>
+<li >Two</li>
+<li >Three</li>
+</ul>
+
+<ul id="god">
+<li >One</li>
+<li >Two</li>
+<li >Three</li>
+</ul>
+
+<input type="button" value="ColorLI" onclick="colorLI()">
+</body>
+
+</html>

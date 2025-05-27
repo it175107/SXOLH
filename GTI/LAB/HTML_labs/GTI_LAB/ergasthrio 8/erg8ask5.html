@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Untitled 2</title>
+<script>
+function createContent(tagtype)
+{
+	var element = document.createElement(tagtype);
+	element.innerHTML = " This is some text";
+	document.body.appendChild(element)
+	
+	//var x = document.getElementByID("myselect");
+	//x.innerHTML = x.innerHTML + "<option value='table'></option>
+}
+</script>
+</head>
+<body>
+<select id="myselect">
+<option default value="H1">Heading 1</option>
+<option value="IMG">Image</option>
+<option value="HR">Horizontal Rule</option>
+</select>
+<ul id="father">
+</ul>
+<input type="button" value="ColorLI" 
+onclick="createContent('H1')">
+</body>
+</html>

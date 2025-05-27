@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<SCRIPT>
+function evaluateobject()
+{
+if (document.getElementById("showhide").value == "show") {
+  var obj = "window"
+  var property
+
+  for (property in eval(obj)){
+    document.getElementById("output").innerHTML=document.getElementById("output").innerHTML+ property + ": " + eval(obj)[property] + "<BR>"
+    }
+
+  document.getElementById("showhide").value="hide"
+  } else {
+    document.getElementById("output").innerHTML=""
+    document.getElementById("showhide").value="show"
+  }
+}
+</SCRIPT>
+<TITLE>Listing 10-1</TITLE>
+</HEAD>
+<BODY>
+<input id="showhide" type="button" value="show" onclick="evaluateobject()">
+<div id="output"></div>
+</BODY>
+</HTML>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Untitled 5</title>
+<script type="application/javascript">
+var count=0;
+function overme()
+{
+
+var obj=event.target
+document.getElementById("showtag").value = obj.tagName;
+document.getElementById("showcontent").value = obj.innerText;
+}
+</script></head>
+
+<body >
+<div id="container" onmousemove="overme()">
+<p id="mypar"><b>Mike</b></p><br/>
+<h1>salampasis</h1>
+<div>test</div>
+</div>
+
+<input id="showtag" type="text">
+<textarea id="showcontent">
+</textarea>
+</body>
+</html>
+
+

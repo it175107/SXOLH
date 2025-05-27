@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>.:: A Very Simple Slide Show ::.</TITLE>
+</HEAD>
+<BODY>
+<CENTER>
+
+<script language="javascript">
+
+var myArray = [ ["1.jpg",100, 120],
+["22.png",120, 340],
+["33.jpg", 200, 120] ];
+pos = 0;
+
+function filltable()
+{
+var mytable = document.getElementById("coords")
+for( i=0; i<3; i++)
+for(j=0; j<3; j++)
+mytable.rows[i].cells[j].innerText=myArray[i][j]
+
+}
+function backward()
+{
+if(pos > 0)
+{
+pos = pos - 1;
+document.getElementById("myimg").src = myArray[pos][0];
+document.getElementById("myimg").style.height = myArray[pos][1];
+document.getElementById("myimg").style.width = myArray[pos][2];
+document.getElementById("count").innerText = (pos+1) + " / " + myArray.length
+
+}
+else
+{
+pos = myArray.length
+}
+}
+function forward()
+{
+if(pos < myArray.length-1)
+{
+pos=pos+1;
+document.getElementById("myimg").src = myArray[pos][0];
+document.getElementById("myimg").style.height = myArray[pos][1];
+document.getElementById("myimg").style.width = myArray[pos][2];
+document.getElementById("count").innerText = (pos+1) + " / " + myArray.length 
+}
+else
+{
+pos=0;
+}
+}
+</script>
+
+<table border="1" id="coords" style="width: 100%">
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</table>
+<hr>
+<INPUT TYPE="button" NAME="previous" VALUE="Previous" onClick=backward()>
+
+<INPUT TYPE="button" NAME="next" VALUE="Next" onClick=forward()>
+<hr>
+<IMG id="myimg" SRC="1.jpg" ALT="AN IMAGE">
+<span id="count"></span>
+<INPUT TYPE="button" NAME="next" VALUE="Fill" onClick=filltable()>
+</center>
+</BODY>
